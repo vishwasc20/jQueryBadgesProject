@@ -5,7 +5,7 @@ $(function() {
     success: function(response) {
       // handle response
       $.each( response.courses.completed, function( key, value ) {
-        var element = $("<div class='courses'></div>").text(value);
+        var element = $("<div class='course'></div>").text(value);
         $("#badges").append(element);
         var title = $("<h3></h3>").text(response.courses.completed[key].title);
         $(element).append(title);
