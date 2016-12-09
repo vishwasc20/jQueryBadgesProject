@@ -5,17 +5,19 @@ $(function() {
     success: function(response) {
       // handle response
       $.each( response.courses.completed, function( key, value ) {
-        var element = $("<div class='course'></div>").text(value);
+        console.log("response.courses.completed :",value);
+        var element = $("<div></div>").text(value).addClass("course");
         $("#badges").append(element);
         var title = $("<h3></h3>").text(response.courses.completed[key].title);
         $(element).append(title);
-        var badge = $("<img/>").src(response.courses.completed[key].badge);
+        var badge = $("<img/>").attr("src", response.courses.completed[key].badge);
         $(element).append(badge);
-        var button = $("<a class='btn btn-primary'></a>")
-          .href(response.courses.completed[key].url)
-          .target("_blank")
+        var button = $("<a></a>")
+          .addClass("btn btn-primary")
+          .attr("href", response.courses.completed[key].url)
+          .attr("target", "_blank")
           .text("See Course");
-        $(element).append(badge);
+        $(element).append(button);
       });
     }
   });
